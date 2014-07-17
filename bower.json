@@ -1,0 +1,32 @@
+{
+  "name": "tribe",
+  "version": "0.1.0",
+  "authors": [
+    "Jason Miller <jasonmiller@synacor.com>"
+  ],
+  "main": "tribe.js",
+  "moduleType": [
+    "amd",
+    "cjs",
+    "globals"
+  ],
+  "keywords": [
+    "tribe",
+    "request",
+    "http",
+    "network",
+    "ajax",
+    "api"
+  ],
+  "license": "Proprietary",
+  "homepage": "https://stash.corp.synacor.com/projects/APLA/repos/tribe",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "logo.acorn",
+    "logo.png"
+  ]
+}

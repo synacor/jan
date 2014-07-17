@@ -1,0 +1,25 @@
+{
+  "name": "tribe",
+  "version": "0.1.0",
+  "description": "tribe is a simple library for making HTTP requests",
+  "main": "hashi.js",
+  "scripts": {
+    "test": "echo 'No tests defined' && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@stash.corp.synacor.com:7999/apla/tribe.git"
+  },
+  "keywords": [
+    "tribe",
+    "request",
+    "http",
+    "network",
+    "ajax",
+    "api"
+  ],
+  "author": "Jason Miller <jasonmiller@synacor.com>",
+  "license": "Proprietary",
+  "dependencies": {},
+  "devDependencies": {}
+}

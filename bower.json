@@ -23,11 +23,13 @@
   "private": true,
   "ignore": [
     "**/.*",
+    "**/*.min.js",
     "node_modules",
     "bower_components",
-    "**/*.min.js",
-    "test",
-    "logo.acorn",
-    "logo.png"
+    "src",
+    "doctemplate",
+    "docs",
+    "Gruntfile.js",
+    "test"
   ]
 }

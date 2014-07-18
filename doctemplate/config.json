@@ -1,0 +1,10 @@
+{
+	"opts" : {
+		"template" : "./doctemplate",
+		"indexName" : "tribe",
+		"mainpagetitle" : "tribe"
+	},
+	"plugins" : [
+		"plugins/markdown"
+	]
+}

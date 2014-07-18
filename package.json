@@ -1,10 +1,11 @@
 {
   "name": "tribe",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "tribe is a simple library for making HTTP requests",
   "main": "hashi.js",
   "scripts": {
-    "test": "echo 'No tests defined' && exit 0"
+    "build": "grunt",
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,21 @@
   ],
   "author": "Jason Miller <jasonmiller@synacor.com>",
   "license": "Proprietary",
+  "readmeFilename": "README.md",
+  "directories": {
+    "doc": "docs"
+  },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jsdoc": "^0.5.6",
+    "grunt-mocha": "^0.4.11",
+    "jsdoc": "^3.3.0-alpha9",
+    "load-grunt-tasks": "^0.6.0"
+  }
 }

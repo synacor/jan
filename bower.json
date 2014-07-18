@@ -1,6 +1,6 @@
 {
   "name": "tribe",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "authors": [
     "Jason Miller <jasonmiller@synacor.com>"
   ],
@@ -25,6 +25,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
+    "**/*.min.js",
     "test",
     "logo.acorn",
     "logo.png"

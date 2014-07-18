@@ -1,5 +1,5 @@
 
-![Tribe](logo.png)
+![Tribe](http://cl.ly/image/3x3M2n330204/logo.png)
 
 **Tribe is a simple library for making HTTP requests.**  
 *Tribe makes it easy to issue network calls without dealing with awkward legacy API signatures.*  
@@ -13,10 +13,17 @@ It's 2014, we're on Web 3.0 or some "living document" version of the web by now.
 We no longer need strange made-up strange names for basic concepts like HTTP requests.  
 > **Ask yourself:**
 >
-> - Why would you use a DOM abstraction library to do networking?  
-> - Would it be considered "normal" to use a library on the server that both rendered HTML templates and abstracted WebSocket connections?  
+> - Why am I using a DOM manipulation library to do networking?  
+> - Would I consider using a NPM package that both rendered HTML templates and abstracted WebSocket communications?  
 
-It's time we dropped these aging APIs and got back to the basics of what makes networking simple:
+We all know application architecture is easier when it isn't tied to monolithic frameworks.  
+It's time we dropped these aging APIs and got back to the basics of what makes networking simple.  
+
+
+Usage
+-----
+
+**Basic GET request:**
 
 ```js
 tribe.get('/api/foo.json', function(err, json) {
@@ -24,7 +31,21 @@ tribe.get('/api/foo.json', function(err, json) {
 });
 ```
 
-Here's the rest of the options:
+
+**POST request:**
+
+```js
+tribe.post({
+	url : '/api/todos',
+	body : 'name=Get%20gas'
+}, function(err, data) {
+	if (err) throw err;
+	alert('ToDo created: ' + data.name);
+});
+```
+
+
+**Request with all options:**
 
 ```js
 tribe({
@@ -43,24 +64,62 @@ tribe({
 ```
 
 
-Installation
-------------
+Plugins / Events
+----------------
 
-```bash
-bower install tribe=git+ssh://git@stash.corp.synacor.com:7999/apla/tribe.git
+**Hook requests with the `req` event:**
+
+```js
+// A plugin that adds an API key header to all requests:
+tribe.on('req', function(e) {
+	e.req.headers['x-api-key'] = 'my-super-secure-api-key';
+});
+```
+
+**Hook responses with the `res` event:**
+
+```js
+// A plugin that adds an API key header to all requests:
+tribe.on('req', function(e) {
+	e.req.headers['x-api-key'] = 'my-super-secure-api-key';
+});
 ```
 
 
-Usage
------
+Instantiation
+-------------
+
+**Via node / browserify:**
 
 ```js
 var tribe = require('tribe');
+```
 
-// A plugin that adds an API key header to all requests:
-tribe.plugin(function(opt, xhr) {
-	opt.headers['x-api-key'] = 'my-super-secure-api-key';
+**Via AMD / requirejs:**
+
+```js
+define(['tribe'], function(tribe) {
+
 });
+```
+
+**Via globals / script tag:**
+
+```html
+<script src="tribe.js"></script>
+<script>
+	tribe;  // now it's exposed as a "tribe" global
+</script>
+```
+
+
+Installation
+------------
+
+**Get it via bower:**
+
+```bash
+bower install tribe=git+ssh://git@stash.corp.synacor.com:7999/apla/tribe.git
 ```
 
 

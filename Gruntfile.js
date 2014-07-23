@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 				jsdoc : './node_modules/.bin/jsdoc',
 				dest : 'docs',
 				options : {
-					configure : 'doctemplate/config.json'
+					configure : './doctemplate/config.json'
 				}
 			}
 		},

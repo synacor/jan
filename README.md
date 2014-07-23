@@ -116,11 +116,16 @@ define(['tribe'], function(tribe) {
 Installation
 ------------
 
-**Get it via bower:**
+**Installation via Bower:** *(Recommended)*
 
 ```bash
 bower install tribe=git+ssh://git@stash.corp.synacor.com:7999/apla/tribe.git
 ```
+
+**Manual Download:**
+
+- [tribe.js](dist/tribe.js) - *full source with comments, for development*
+- [tribe.min.js](dist/tribe.min.js) - *minified, for production*
 
 
 License

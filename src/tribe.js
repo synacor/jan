@@ -1,4 +1,6 @@
-/** A solution to the hilarious over-use of "ajax frameworks".
+/** Tribe is a simple library for making HTTP requests.
+ *
+ * Tribe makes it easy to issue network calls without dealing with awkward legacy API signatures.
  *
  * If called as a function, `tribe()` is an alias of {@link module:tribe.request `tribe.request()`}
  * @module tribe

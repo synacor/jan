@@ -19,15 +19,32 @@ prettyPrint();
 
 // menu updates
 (function() {
-	var url = location.href,
-		links = document.querySelectorAll('nav li a'),
-		i;
-	for (i=links.length; i--; ) {
-		if (links[i].href===url) {
-			links[i].className = (links[i].className || '') + ' current';
+	function updateNav() {
+		var url = location.href,
+			links = document.querySelectorAll('nav li a'),
+			i;
+		for (i=links.length; i--; ) {
+			if (links[i].href===url) {
+				links[i].className = 'current';
+			}
+			else if (links[i].href===url.replace(/#.*/g,'')) {
+				links[i].className = 'parent';
+			}
+			else {
+				links[i].className = '';
+			}
 		}
+		//links = document.querySelectorAll('.navinner');
+		//for (i=links.length; i--; ) {
+		//	links[i].style.display = (links[i].previousSibling.querySelector('.current') || links[i].querySelector('.current')) ? 'block' : 'none';
+		//}
 	}
-	
+
+	updateNav();
+
+	addEventListener('popstate', updateNav);
+	addEventListener('hashchange', updateNav);
+
 	// menu link is a toggle, sidebar links are close-only
 	function click(e) {
 		var op = 'remove';

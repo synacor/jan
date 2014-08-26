@@ -40,7 +40,7 @@
 	}
 }(function() {
 	var events = { req:[], res:[] },
-		methods = 'GET POST PUT DELETE HEAD'.split(' '),
+		methods = 'GET POST PUT DELETE HEAD OPTIONS'.split(' '),
 		hop = {}.hasOwnProperty;
 
 	/** Issue an HTTP request.
@@ -190,6 +190,18 @@
 	 *	tribe.head('/massive.json', function(err, data, res) {
 	 *		if (err) throw err;
 	 *		console.log(res.headers);
+	 *	});
+	 */
+
+	/**	Alias of {@link module:tribe.request request()} that presupplies the option `method:'OPTIONS'`
+	 *	@name module:tribe.options
+	 *	@function
+	 *
+	 * @example
+	 *	<caption>Get WADL XML</caption>
+	 *	tribe.options('/api/v1', function(err, data, res) {
+	 *		if (err) throw err;
+	 *		console.log(res.headers, res.body);
 	 *	});
 	 */
 

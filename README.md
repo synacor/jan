@@ -26,8 +26,8 @@ Usage
 **Basic GET request:**
 
 ```js
-tribe.get('/api/foo.json', function(err, json) {
-	console.log(err, json);
+tribe.get('/api/foo.json', function(err, res, json) {
+	console.log(err, res, json);
 });
 ```
 
@@ -38,7 +38,7 @@ tribe.get('/api/foo.json', function(err, json) {
 tribe.post({
 	url : '/api/todos',
 	body : 'name=Get%20gas'
-}, function(err, data) {
+}, function(err, res, data) {
 	if (err) throw err;
 	alert('ToDo created: ' + data.name);
 });
@@ -79,9 +79,11 @@ tribe.on('req', function(e) {
 **Hook responses with the `res` event:**
 
 ```js
-// A plugin that adds an API key header to all requests:
-tribe.on('req', function(e) {
-	e.req.headers['x-api-key'] = 'my-super-secure-api-key';
+// A plugin that parses CSV responses
+tribe.on('res', function(e) {
+	if (e.res.headers['content-type']==='text/csv') {
+		e.res.data = e.res.csv = e.res.text.split(/\s*\,\s*/g);
+	}
 });
 ```
 

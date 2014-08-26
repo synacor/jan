@@ -21,14 +21,14 @@
  *		});
  *
  *		// Make a basic GET request:
- *		tribe('/api/todos', function(err, data) {
+ *		tribe('/api/todos', function(err, res, body) {
  *			if (err) throw err;
  *			var names = data.map(function(todo){ return todo.name; });
  *			alert('ToDos: ' + names.join(', '));
  *		});
  *	});
  */
-(function(factory) {
+(function(root, factory) {
 	if (typeof define==='function' && define.amd) {
 		define([], factory);
 	}
@@ -36,9 +36,9 @@
 		module.exports = factory();
 	}
 	else {
-		window.tribe = factory();
+		root.tribe = factory();
 	}
-}(function() {
+}(this, function() {
 	var events = { req:[], res:[] },
 		methods = 'GET POST PUT DELETE HEAD OPTIONS'.split(' '),
 		hop = {}.hasOwnProperty;
@@ -54,7 +54,7 @@
 	 * @param {Object} [opt.headers={ }]		A map of request headers
 	 * @param {String} [opt.user=none]			Authentication username, if basic auth is to be used
 	 * @param {String} [opt.pass=none]			Authentication password for basic auth
-	 * @param {Function} callback				A function to call when the request has completed (error or success). Gets passed `(err, data, res)`.
+	 * @param {Function} callback				A function to call when the request has completed (error or success). Gets passed `(err, httpResponse, responseBody)`.
 	 *
 	 * @example
 	 *	<caption>"Kitchen Sync"</caption>
@@ -67,9 +67,9 @@
 	 *		user : 'bob',
 	 *		pass : 'firebird',
 	 *		body : JSON.stringify({ key : 'value' })
-	 *	}, function(err, data, res) {
+	 *	}, function(err, res, body) {
 	 *		if (err) throw err;
-	 *		console.log(res.status===204, data);
+	 *		console.log(res.status===204, body);
 	 *	});
 	 */
 	function tribe(opt, callback) {
@@ -98,7 +98,7 @@
 			while (m=hreg.exec(h)) res.headers[m[1].toLowerCase()] = m[2];
 			e.res = res;
 			emit('res', e);
-			(callback || opt.callback).call(e, res.error, res.data, res);
+			(callback || opt.callback).call(e, res.error, res, res.data);
 		};
 		xhr.send(opt.body);
 	}

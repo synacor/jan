@@ -2,7 +2,11 @@
 	"opts" : {
 		"template" : "./doctemplate",
 		"indexName" : "tribe",
-		"mainpagetitle" : "tribe"
+		"mainpagetitle" : "Tribe",
+		"private" : false
+	},
+	"tags": {
+		"allowUnknownTags": true
 	},
 	"plugins" : [
 		"plugins/markdown"

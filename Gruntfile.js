@@ -36,7 +36,8 @@ module.exports = function(grunt) {
 				options : {
 					'-W041' : true,
 					'-W030' : true,			// && as guard
-					'-W084' : true			// while(a=b())
+					'-W084' : true,			// assignment in expression -> while(a=b())
+					'-W093' : true			// assignment in return -> return foo=bar;
 				},
 				src : ['src/**/*.js']
 			},

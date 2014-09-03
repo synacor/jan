@@ -104,6 +104,36 @@
 	}
 
 
+	/**Get a namespaced copy of {@link module:tribe tribe} where all methods are relative to a base URL.
+	 * @function
+	 * @name module:tribe.ns
+	 * @param {String} baseUrl		A URL to which all namespaced methods should be relative
+	 * @returns A `baseUrl`-namespaced tribe interface
+	 * @example
+	 *	// Create a namespaced API client:
+	 *	var api = tribe.ns('https://example.com/api');
+	 *
+	 *	// GET /api/images:
+	 *	api.get('/images', function(err, res, images) {
+	 *		console.log(images);
+	 *	});
+	 *
+	 *	// Log response headers for any requests to the base URL:
+	 *	api.on('res', function(e) {
+	 *		console.log( e.res.headers );
+	 *	});
+	 */
+	tribe.ns = function(uri) {
+		var opt = { baseUrl:uri },
+			ns = mapVerbs(alias(opt), opt);
+		ns.on = function(type, handler, a) {
+			tribe.on(t, uri + (handler.sub ? handler : ''), a || handler);
+			return ns;
+		};
+		return ns;
+	};
+
+
 	/**Register a handler function to be called in response to a given type of event.
 	 *
 	 * Valid event types are: `req` and `res`, fired on request and response respectively.

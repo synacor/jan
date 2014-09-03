@@ -131,32 +131,60 @@
 	}
 
 
+	/**Get a namespaced copy of {@link module:tribe tribe} where all methods are relative to a base URL.
+	 * @function
+	 * @name module:tribe.ns
+	 * @param {String} baseUrl		A URL to which all namespaced methods should be relative
+	 * @returns A `baseUrl`-namespaced tribe interface
+	 * @example
+	 *	// Create a namespaced API client:
+	 *	var api = tribe.ns('https://example.com/api');
+	 *
+	 *	// GET /api/images:
+	 *	api.get('/images', function(err, res, images) {
+	 *		console.log(images);
+	 *	});
+	 *
+	 *	// Log response headers for any requests to the base URL:
+	 *	api.on('res', function(e) {
+	 *		console.log( e.res.headers );
+	 *	});
+	 */
+	tribe.ns = function(uri) {
+		var opt = { baseUrl:uri },
+			ns = mapVerbs(alias(opt), opt);
+		ns.on = function(type, handler, a) {
+			tribe.on(t, uri + (handler.sub ? handler : ''), a || handler);
+			return ns;
+		};
+		return ns;
+	};
+
+
 	/**Register a handler function to be called in response to a given type of event.
+	 *
 	 * Valid event types are: `req` and `res`, fired on request and response respectively.
+	 * @function
+	 * @name module:tribe.on
 	 * @example
 	 *	tribe.on('res', function(e) {
 	 *		// e.req
 	 *		// e.res
 	 *		// e.xhr
 	 *	});
-	 * @param {String} type			An event type to observe
-	 * @param {Function} handler	Handler function, gets passed an Event object
+	 * @param {String} type					An event type to observe
+	 * @param {String|RegExp} [urlFilter]	A String prefix or RegExp to filter against each event's request url
+	 * @param {Function} handler			Handler function, gets passed an Event object
 	 */
-	tribe.on = function(type, handler) {
-		events[type].push(handler);
+	tribe.on = function(type, handler, a) {
+		events[type].push(a ? function(e) {
+			if (e.req.url===handler || (handler.exec &amp;&amp; e.req.url.match(handler))) {
+				a.call(this, e);
+			}
+		} : handler);
+		return tribe;
 	};
 
-
-	function emit(type, args) {
-		args = Array.prototype.slice.call(arguments, 1);
-		for (var e=events[type], i=e.length; i--; ) e[i].apply(tribe, args);
-	}
-
-	function alias(overrides) {
-		return function(opt, callback) {
-			return tribe(extend({}, typeof opt==='string' ? {url:opt} : opt, overrides), callback);
-		};
-	}
 
 	/**Alias of {@link module:tribe.request request()} that presupplies the option `method:'GET'`
 	 * @name module:tribe.get
@@ -253,10 +281,36 @@
 	 *	@deprecated Don't call &lt;code>delete()&lt;/code> if you need to support ES3. &lt;code>tribe['delete']()&lt;/code> is okay.
 	 */
 
-	for (var i=methods.length; i--; ) {
-		tribe[methods[i].toLowerCase()] = alias({ method:methods[i] });
+	mapVerbs(tribe);
+
+
+	function emit(type, args) {
+		args = Array.prototype.slice.call(arguments, 1);
+		for (var e=events[type], i=e.length; i--; ) e[i].apply(tribe, args);
 	}
-	tribe.del = tribe['delete'];
+
+
+	function alias(overrides) {
+		return function(opt, callback) {
+			var req = extend({}, typeof opt==='string' ? {url:opt} : opt, overrides);
+			if (overrides.baseUrl) {
+				req.url = overrides.baseUrl + opt.url;
+			}
+			return tribe(req, callback);
+		};
+	}
+
+
+	function mapVerbs(onto, opts) {
+		for (var i=methods.length; i--; ) {
+			onto[methods[i].toLowerCase()] = alias(extend({}, opts || {}, {
+				method : methods[i]
+			}));
+		}
+		onto.del = onto['delete'];
+		return onto.request = onto;
+	}
+
 
 	function extend(base, obj) {
 		for (var i=1, p, o; i&lt;arguments.length; i++) {
@@ -266,7 +320,9 @@
 		return base;
 	}
 
-	tribe.tribe = tribe.request = tribe;
+
+	tribe.tribe = tribe;
+
 	return tribe;
 }));
 </code></pre>
@@ -281,11 +337,11 @@
 	<a class="menuLink">Menu</a>
 	
 	<nav>
-		<h2><a href="index.html">tribe</a></h2><div class="nav-modules"><h3>Modules</h3><ul><li title="module:tribe"><a href="module-tribe.html">tribe</a></li><div class="navinner nav-methods"><h4>Methods</h4><ul><li title="module:tribe.del"><a href="module-tribe.html#del">del</a></li><li title="module:tribe.delete"><a href="module-tribe.html#delete">delete</a></li><li title="module:tribe.get"><a href="module-tribe.html#get">get</a></li><li title="module:tribe.head"><a href="module-tribe.html#head">head</a></li><li title="module:tribe.options"><a href="module-tribe.html#options">options</a></li><li title="module:tribe.post"><a href="module-tribe.html#post">post</a></li><li title="module:tribe.put"><a href="module-tribe.html#put">put</a></li><li title="module:tribe.request"><a href="module-tribe.html#request">request</a></li></ul></div></ul>
+		<h2><a href="index.html">tribe</a></h2><div class="nav-modules"><h3>Modules</h3><ul><li title="module:tribe"><a href="module-tribe.html">tribe</a></li><div class="navinner nav-methods"><h4>Methods</h4><ul><li title="module:tribe.del"><a href="module-tribe.html#del">del</a></li><li title="module:tribe.delete"><a href="module-tribe.html#delete">delete</a></li><li title="module:tribe.get"><a href="module-tribe.html#get">get</a></li><li title="module:tribe.head"><a href="module-tribe.html#head">head</a></li><li title="module:tribe.ns"><a href="module-tribe.html#ns">ns</a></li><li title="module:tribe.on"><a href="module-tribe.html#on">on</a></li><li title="module:tribe.options"><a href="module-tribe.html#options">options</a></li><li title="module:tribe.post"><a href="module-tribe.html#post">post</a></li><li title="module:tribe.put"><a href="module-tribe.html#put">put</a></li><li title="module:tribe.request"><a href="module-tribe.html#request">request</a></li></ul></div></ul>
 	</nav>
 
 	<footer>
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Aug 26 2014 16:09:36 GMT-0400 (EDT)
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Sep 03 2014 16:36:55 GMT-0400 (EDT)
 	</footer>
 
 	<script src="scripts/prettify/prettify.js"></script>

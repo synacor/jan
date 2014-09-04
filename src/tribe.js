@@ -72,8 +72,16 @@
 	 *		console.log(res.status===204, body);
 	 *	});
 	 */
-	function tribe(opt, callback) {
+	function tribe(opt, callback, a) {
+		if (a) {
+			opt = extend(callback || {}, { url:opt });
+			callback = a;
+		}
 		opt = typeof opt==='string' ? {url:opt} : opt || {};
+		if (opt.baseUrl) {
+			// TODO: proper support for URL concatenation
+			opt.url = opt.baseUrl + opt.url;
+		}
 		opt.headers = opt.headers || {};
 		var xhr = new XMLHttpRequest(),
 			e = { xhr:xhr, req:opt };
@@ -127,7 +135,7 @@
 		var opt = { baseUrl:uri },
 			ns = mapVerbs(alias(opt), opt);
 		ns.on = function(type, handler, a) {
-			tribe.on(t, uri + (handler.sub ? handler : ''), a || handler);
+			tribe.on(type, uri + (handler.sub ? handler : ''), a || handler);
 			return ns;
 		};
 		return ns;
@@ -265,11 +273,7 @@
 
 	function alias(overrides) {
 		return function(opt, callback) {
-			var req = extend({}, typeof opt==='string' ? {url:opt} : opt, overrides);
-			if (overrides.baseUrl) {
-				req.url = overrides.baseUrl + opt.url;
-			}
-			return tribe(req, callback);
+			return tribe(extend({}, typeof opt==='string' ? {url:opt} : opt, overrides), callback);
 		};
 	}
 

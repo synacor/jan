@@ -159,7 +159,7 @@
 	 */
 	tribe.on = function(type, handler, a) {
 		events[type].push(a ? function(e) {
-			if (e.req.url===handler || (handler.exec && e.req.url.match(handler))) {
+			if (handler.exec ? e.req.url.match(handler) : e.req.url.indexOf(handler)===0) {
 				a.call(this, e);
 			}
 		} : handler);

@@ -101,7 +101,7 @@
 				hreg = /^\s*([a-z0-9_-]+)\s*\:\s*(.*?)\s*$/gim,
 				h = xhr.getAllResponseHeaders(),
 				m;
-			try{ res.json = JSON.parse(res.body); }catch(e){}
+			try{ res.json = JSON.parse(res.body); }catch(o){}
 			res.data = res.json || res.xml || res.body;
 			while (m=hreg.exec(h)) res.headers[m[1].toLowerCase()] = m[2];
 			e.res = res;

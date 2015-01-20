@@ -1,8 +1,23 @@
+Frameworkless View [![NPM Version](http://img.shields.io/npm/v/tribe.svg?style=flat)](https://www.npmjs.org/package/tribe) [![Bower Version](http://img.shields.io/bower/v/tribe.svg?style=flat)](http://bower.io/search/?q=tribe)
+=============
 
-![Tribe](http://cl.ly/image/3x3M2n330204/logo.png)
+![Tribe](logo.png)
 
 **Tribe is a simple library for making HTTP requests.**  
-*Tribe makes it easy to issue network calls without dealing with awkward legacy API signatures.*  
+*Issue network calls without dealing with awkward legacy API signatures.*  
+
+**[Documentation](http://tribejs.herokuapp.com)**
+
+[![Build Status](https://img.shields.io/travis/synacorinc/tribe.svg?style=flat&branch=master)](https://travis-ci.org/synacorinc/tribe)
+[![Dependency Status](http://img.shields.io/david/synacorinc/tribe.svg?style=flat)](https://david-dm.org/synacorinc/tribe)
+[![devDependency Status](http://img.shields.io/david/dev/synacorinc/tribe.svg?style=flat)](https://david-dm.org/synacorinc/tribe#info=devDependencies)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+
+---
+
+
 
 
 Why Tribe?
@@ -11,6 +26,7 @@ Why Tribe?
 **"AJAX" just isn't a thing anymore.**  
 It's 2014, we're on Web 3.0 or some "living document" version of the web by now.  
 We no longer need strange made-up strange names for basic concepts like HTTP requests.  
+
 > **Ask yourself:**
 >
 > - Why am I using a DOM manipulation library to do networking?  

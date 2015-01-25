@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>Tests</title>
+		<link rel="stylesheet" href="css/mocha.css" type="text/css" />
+	</head>
+
+	<body>
+		<div id="mocha"></div>
+
+		<script src="js/mocha.js"></script>
+		<script src="js/sinon.js"></script>
+		<script src="js/chai.js"></script>
+		<script src="js/sinon-chai.js"></script>
+
+		<script>
+			var expect = chai.expect;
+			mocha.setup('bdd');
+
+			if (!window.PHANTOMJS && !navigator.userAgent.match(/\bPhantomJS\b/g)) {
+				setTimeout(function() {
+					mocha.run();
+				}, 1);
+			}
+		</script>
+
+
+		<!-- source -->
+		<script>
+			var require = {
+				baseUrl : '../src'
+			};
+		</script>
+		<script src="js/require.js"></script>
+
+		<!-- tests -->
+		<script src="spec/jan.js"></script>
+	</body>
+</html>

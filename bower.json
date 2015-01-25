@@ -1,6 +1,6 @@
 {
   "name": "jan",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Jan is a simple library for making HTTP requests.",
   "authors": [
     "Jason Miller <jasonmiller@synacor.com>"
@@ -31,6 +31,7 @@
     "doctemplate",
     "docs",
     "Gruntfile.js",
+    "server.js",
     "test"
   ]
 }

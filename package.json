@@ -4,9 +4,9 @@
   "description": "Jan is a simple library for making HTTP requests.",
   "main": "jan.js",
   "scripts": {
-    "pre-start": "grunt",
-    "start": "node server.js",
     "build": "grunt",
+    "prestart": "grunt",
+    "start": "node server.js",
     "test": "grunt test"
   },
   "repository": {

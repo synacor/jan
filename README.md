@@ -1,16 +1,16 @@
-Frameworkless View [![NPM Version](http://img.shields.io/npm/v/tribe.svg?style=flat)](https://www.npmjs.org/package/tribe) [![Bower Version](http://img.shields.io/bower/v/tribe.svg?style=flat)](http://bower.io/search/?q=tribe)
+Jan [![NPM Version](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www.npmjs.org/package/jan) [![Bower Version](http://img.shields.io/bower/v/jan.svg?style=flat)](http://bower.io/search/?q=jan)
 =============
 
-![Tribe](logo.png)
+![Jan](http://janjs.herokuapp.com/logo.png)
 
-**Tribe is a simple library for making HTTP requests.**  
+**Jan is a simple library for making HTTP requests.**  
 *Issue network calls without dealing with awkward legacy API signatures.*  
 
-**[Documentation](http://tribejs.herokuapp.com)**
+**[Documentation](http://janjs.herokuapp.com)**
 
-[![Build Status](https://img.shields.io/travis/synacorinc/tribe.svg?style=flat&branch=master)](https://travis-ci.org/synacorinc/tribe)
-[![Dependency Status](http://img.shields.io/david/synacorinc/tribe.svg?style=flat)](https://david-dm.org/synacorinc/tribe)
-[![devDependency Status](http://img.shields.io/david/dev/synacorinc/tribe.svg?style=flat)](https://david-dm.org/synacorinc/tribe#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/synacorinc/jan.svg?style=flat&branch=master)](https://travis-ci.org/synacorinc/jan)
+[![Dependency Status](http://img.shields.io/david/synacorinc/jan.svg?style=flat)](https://david-dm.org/synacorinc/jan)
+[![devDependency Status](http://img.shields.io/david/dev/synacorinc/jan.svg?style=flat)](https://david-dm.org/synacorinc/jan#info=devDependencies)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
@@ -20,20 +20,20 @@ Frameworkless View [![NPM Version](http://img.shields.io/npm/v/tribe.svg?style=f
 
 
 
-Why Tribe?
-----------
+Why Jan?
+--------
 
 **"AJAX" just isn't a thing anymore.**  
 It's 2014, we're on Web 3.0 or some "living document" version of the web by now.  
-We no longer need strange made-up strange names for basic concepts like HTTP requests.  
+We don't need to invent names for basic concepts like making HTTP requests.  
 
 > **Ask yourself:**
 >
-> - Why am I using a DOM manipulation library to do networking?  
+> - Am I using a DOM manipulation library to do networking?  
 > - Would I consider using a NPM package that both rendered HTML templates and abstracted WebSocket communications?  
 
-We all know application architecture is easier when it isn't tied to monolithic frameworks.  
-It's time we dropped these aging APIs and got back to the basics of what makes networking simple.  
+Application architecture is easier when it isn't tied to monolithic frameworks.  
+It's time to drop those aging AJAX APIs and get back to the basics of what makes networking simple.  
 
 
 Usage
@@ -42,7 +42,7 @@ Usage
 **Basic GET request:**
 
 ```js
-tribe.get('/api/foo.json', function(err, res, json) {
+jan.get('/api/foo.json', function(err, res, json) {
 	console.log(err, res, json);
 });
 ```
@@ -51,7 +51,7 @@ tribe.get('/api/foo.json', function(err, res, json) {
 **POST request:**
 
 ```js
-tribe.post({
+jan.post({
 	url : '/api/todos',
 	body : 'name=Get%20gas'
 }, function(err, res, data) {
@@ -64,7 +64,7 @@ tribe.post({
 **Request with all options:**
 
 ```js
-tribe({
+jan({
 	method : 'PUT',
 	url : 'http://foo.com/bar.json',
 	headers : {
@@ -87,7 +87,7 @@ Plugins / Events
 
 ```js
 // A plugin that adds an API key header to all requests:
-tribe.on('req', function(e) {
+jan.on('req', function(e) {
 	e.req.headers['x-api-key'] = 'my-super-secure-api-key';
 });
 ```
@@ -96,7 +96,7 @@ tribe.on('req', function(e) {
 
 ```js
 // A plugin that parses CSV responses
-tribe.on('res', function(e) {
+jan.on('res', function(e) {
 	if (e.res.headers['content-type']==='text/csv') {
 		e.res.data = e.res.csv = e.res.text.split(/\s*\,\s*/g);
 	}
@@ -110,13 +110,13 @@ Instantiation
 **Via node / browserify:**
 
 ```js
-var tribe = require('tribe');
+var jan = require('jan');
 ```
 
 **Via AMD / requirejs:**
 
 ```js
-define(['tribe'], function(tribe) {
+define(['jan'], function(jan) {
 
 });
 ```
@@ -124,9 +124,9 @@ define(['tribe'], function(tribe) {
 **Via globals / script tag:**
 
 ```html
-<script src="tribe.js"></script>
+<script src="jan.js"></script>
 <script>
-	tribe;  // now it's exposed as a "tribe" global
+	jan;  // now it's exposed as a "jan" global
 </script>
 ```
 
@@ -137,16 +137,22 @@ Installation
 **Installation via Bower:** *(Recommended)*
 
 ```bash
-bower install tribe=git+ssh://git@stash.corp.synacor.com:7999/apla/tribe.git
+bower install jan
 ```
 
 **Manual Download:**
 
-- [tribe.js](dist/tribe.js) - *full source with comments, for development*
-- [tribe.min.js](dist/tribe.min.js) - *minified, for production*
+- [jan.js](dist/jan.js) - *full source with comments, for development*
+- [jan.min.js](dist/jan.min.js) - *minified, for production*
 
 
 License
 -------
 
-Proprietary / Closed-Source
+BSD
+
+
+---
+
+
+[![Jan Hankl](http://janjs.herokuapp.com/jan.jpg)](http://youtu.be/DY-Zdgo0OXo)

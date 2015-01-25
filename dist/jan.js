@@ -1,27 +1,27 @@
-/** Tribe is a simple library for making HTTP requests.
+/** Jan is a simple library for making HTTP requests.
  *
- * Tribe makes it easy to issue network calls without dealing with awkward legacy API signatures.
+ * Jan makes it easy to issue network calls without dealing with awkward legacy API signatures.
  *
- * If called as a function, `tribe()` is an alias of {@link module:tribe.request `tribe.request()`}
- * @module tribe
+ * If called as a function, `jan()` is an alias of {@link module:jan.request `jan.request()`}
+ * @module jan
  *
  * @example
  *	<caption>Basic Usage</caption>
  *	// grab the library:
- *	require(['tribe'], function(tribe) {
+ *	require(['jan'], function(jan) {
  *
  *		// Log requests before they go out:
- *		tribe.on('req', function(e) {
+ *		jan.on('req', function(e) {
  *			console.log('Request: ', e.req);
  *		});
  *
  *		// Log responses when they come in:
- *		tribe.on('res', function(e) {
+ *		jan.on('res', function(e) {
  *			console.log('Response: ', e.res);
  *		});
  *
  *		// Make a basic GET request:
- *		tribe('/api/todos', function(err, res, body) {
+ *		jan('/api/todos', function(err, res, body) {
  *			if (err) throw err;
  *			var names = data.map(function(todo){ return todo.name; });
  *			alert('ToDos: ' + names.join(', '));
@@ -36,7 +36,7 @@
 		module.exports = factory();
 	}
 	else {
-		root.tribe = factory();
+		root.jan = factory();
 	}
 }(this, function() {
 	var events = { req:[], res:[] },
@@ -44,7 +44,7 @@
 		hop = {}.hasOwnProperty;
 
 	/** Issue an HTTP request.
-	 * @memberOf module:tribe
+	 * @memberOf module:jan
 	 * @name request
 	 * @function
 	 * @param {Object|String} options			Options for the request, or a `String` `"url"` to which a GET request should be issued.
@@ -58,7 +58,7 @@
 	 *
 	 * @example
 	 *	<caption>"Kitchen Sync"</caption>
-	 *	tribe({
+	 *	jan({
 	 *		method : 'PUT',
 	 *		url : 'http://foo.com/bar.json',
 	 *		headers : {
@@ -72,7 +72,7 @@
 	 *		console.log(res.status===204, body);
 	 *	});
 	 */
-	function tribe(opt, callback, a) {
+	function jan(opt, callback, a) {
 		if (a) {
 			opt = extend(callback || {}, { url:opt });
 			callback = a;
@@ -112,14 +112,14 @@
 	}
 
 
-	/**Get a namespaced copy of {@link module:tribe tribe} where all methods are relative to a base URL.
+	/**Get a namespaced copy of {@link module:jan jan} where all methods are relative to a base URL.
 	 * @function
-	 * @name module:tribe.ns
+	 * @name module:jan.ns
 	 * @param {String} baseUrl		A URL to which all namespaced methods should be relative
-	 * @returns A `baseUrl`-namespaced tribe interface
+	 * @returns A `baseUrl`-namespaced jan interface
 	 * @example
 	 *	// Create a namespaced API client:
-	 *	var api = tribe.ns('https://example.com/api');
+	 *	var api = jan.ns('https://example.com/api');
 	 *
 	 *	// GET /api/images:
 	 *	api.get('/images', function(err, res, images) {
@@ -131,11 +131,11 @@
 	 *		console.log( e.res.headers );
 	 *	});
 	 */
-	tribe.ns = function(uri) {
+	jan.ns = function(uri) {
 		var opt = { baseUrl:uri },
 			ns = mapVerbs(alias(opt), opt);
 		ns.on = function(type, handler, a) {
-			tribe.on(type, uri + (handler.sub ? handler : ''), a || handler);
+			jan.on(type, uri + (handler.sub ? handler : ''), a || handler);
 			return ns;
 		};
 		return ns;
@@ -146,9 +146,9 @@
 	 *
 	 * Valid event types are: `req` and `res`, fired on request and response respectively.
 	 * @function
-	 * @name module:tribe.on
+	 * @name module:jan.on
 	 * @example
-	 *	tribe.on('res', function(e) {
+	 *	jan.on('res', function(e) {
 	 *		// e.req
 	 *		// e.res
 	 *		// e.xhr
@@ -157,24 +157,24 @@
 	 * @param {String|RegExp} [urlFilter]	A String prefix or RegExp to filter against each event's request url
 	 * @param {Function} handler			Handler function, gets passed an Event object
 	 */
-	tribe.on = function(type, handler, a) {
+	jan.on = function(type, handler, a) {
 		events[type].push(a ? function(e) {
 			if (handler.exec ? e.req.url.match(handler) : e.req.url.indexOf(handler)===0) {
 				a.call(this, e);
 			}
 		} : handler);
-		return tribe;
+		return jan;
 	};
 
 
-	/**Alias of {@link module:tribe.request request()} that presupplies the option `method:'GET'`
-	 * @name module:tribe.get
+	/**Alias of {@link module:jan.request request()} that presupplies the option `method:'GET'`
+	 * @name module:jan.get
 	 * @function
 	 *
 	 * @example
 	 *	<caption>Get popular YouTube videos</caption>
 	 *	var url = 'http://gdata.youtube.com/feeds/api/standardfeeds/most_popular?v=2&alt=json';
-	 *	tribe.get(url, function(err, data) {
+	 *	jan.get(url, function(err, data) {
 	 *		if (err) throw err;
 	 *		// display video links:
 	 *		document.body.innerHTML = data.feed.entry.map(function(vid) {
@@ -183,13 +183,13 @@
 	 *	});
 	 */
 
-	/**Alias of {@link module:tribe.request request()} that presupplies the option `method:'POST'`
-	 * @name module:tribe.post
+	/**Alias of {@link module:jan.request request()} that presupplies the option `method:'POST'`
+	 * @name module:jan.post
 	 * @function
 	 *
 	 * @example
 	 *	<caption>Submit a contact form</caption>
-	 *	tribe.post({
+	 *	jan.post({
 	 *		url : 'http://example.com/contact-form.php',
 	 *		headers : {
 	 *			'Content-Type' : 'application/x-www-form-encoded'
@@ -201,13 +201,13 @@
 	 *	});
 	 */
 
-	/** Alias of {@link module:tribe.request request()} that presupplies the option `method:'PUT'`
-	 * @name module:tribe.put
+	/** Alias of {@link module:jan.request request()} that presupplies the option `method:'PUT'`
+	 * @name module:jan.put
 	 * @function
 	 *
 	 * @example
 	 *	<caption>Update a REST resource</caption>
-	 *	tribe.put({
+	 *	jan.put({
 	 *		url : 'http://foo.com/bar.json',
 	 *		headers : { 'Content-Type':'application/json' },
 	 *		body : '{"key":"val"}'
@@ -217,37 +217,37 @@
 	 *	});
 	 */
 
-	/**	Alias of {@link module:tribe.request request()} that presupplies the option `method:'HEAD'`
-	 *	@name module:tribe.head
+	/**	Alias of {@link module:jan.request request()} that presupplies the option `method:'HEAD'`
+	 *	@name module:jan.head
 	 *	@function
 	 *
 	 * @example
 	 *	<caption>Get headers</caption>
-	 *	tribe.head('/massive.json', function(err, data, res) {
+	 *	jan.head('/massive.json', function(err, data, res) {
 	 *		if (err) throw err;
 	 *		console.log(res.headers);
 	 *	});
 	 */
 
-	/**	Alias of {@link module:tribe.request request()} that presupplies the option `method:'OPTIONS'`
-	 *	@name module:tribe.options
+	/**	Alias of {@link module:jan.request request()} that presupplies the option `method:'OPTIONS'`
+	 *	@name module:jan.options
 	 *	@function
 	 *
 	 * @example
 	 *	<caption>Get WADL XML</caption>
-	 *	tribe.options('/api/v1', function(err, data, res) {
+	 *	jan.options('/api/v1', function(err, data, res) {
 	 *		if (err) throw err;
 	 *		console.log(res.headers, res.body);
 	 *	});
 	 */
 
-	/**	Alias of {@link module:tribe.request request()} that presupplies the option `method:'DELETE'`
-	 *	@name module:tribe.del
+	/**	Alias of {@link module:jan.request request()} that presupplies the option `method:'DELETE'`
+	 *	@name module:jan.del
 	 *	@function
 	 *
 	 * @example
 	 *	<caption>Delete a REST resource</caption>
-	 *	tribe.del({
+	 *	jan.del({
 	 *		url : '/api/items/1a2b3c'
 	 *	}, function(err, data) {
 	 *		if (err) throw err;
@@ -255,25 +255,25 @@
 	 *	});
 	 */
 
-	/**	Alias of {@link module:tribe.del del()}.
+	/**	Alias of {@link module:jan.del del()}.
 	 *  This alias is provided for completeness, but [should not be used](http://mothereff.in/js-properties#delete) because [it throws in ES3](http://mathiasbynens.be/notes/javascript-properties).
-	 *	@name module:tribe.delete
+	 *	@name module:jan.delete
 	 *	@function
-	 *	@deprecated Don't call <code>delete()</code> if you need to support ES3. <code>tribe['delete']()</code> is okay.
+	 *	@deprecated Don't call <code>delete()</code> if you need to support ES3. <code>jan['delete']()</code> is okay.
 	 */
 
-	mapVerbs(tribe);
+	mapVerbs(jan);
 
 
 	function emit(type, args) {
 		args = Array.prototype.slice.call(arguments, 1);
-		for (var e=events[type], i=e.length; i--; ) e[i].apply(tribe, args);
+		for (var e=events[type], i=e.length; i--; ) e[i].apply(jan, args);
 	}
 
 
 	function alias(overrides) {
 		return function(opt, callback) {
-			return tribe(extend({}, typeof opt==='string' ? {url:opt} : opt, overrides), callback);
+			return jan(extend({}, typeof opt==='string' ? {url:opt} : opt, overrides), callback);
 		};
 	}
 
@@ -285,7 +285,7 @@
 			}));
 		}
 		onto.del = onto['delete'];
-		return onto.request = onto;
+		return onto;
 	}
 
 
@@ -298,7 +298,5 @@
 	}
 
 
-	tribe.tribe = tribe;
-
-	return tribe;
+	return (jan.jan = jan.request = jan);
 }));

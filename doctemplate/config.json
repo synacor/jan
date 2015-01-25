@@ -1,8 +1,8 @@
 {
 	"opts" : {
 		"template" : "./doctemplate",
-		"indexName" : "tribe",
-		"mainpagetitle" : "Tribe",
+		"indexName" : "jan",
+		"mainpagetitle" : "Jan",
 		"private" : false
 	},
 	"tags": {

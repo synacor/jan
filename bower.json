@@ -1,29 +1,30 @@
 {
-  "name": "tribe",
-  "version": "0.3.3",
+  "name": "jan",
+  "version": "1.0.0",
   "authors": [
     "Jason Miller <jasonmiller@synacor.com>"
   ],
-  "main": "tribe.js",
+  "main": "jan.js",
   "moduleType": [
     "amd",
     "cjs",
     "globals"
   ],
   "keywords": [
-    "tribe",
+    "jan",
     "request",
     "http",
     "network",
     "ajax",
     "api"
   ],
-  "license": "Proprietary",
-  "homepage": "https://stash.corp.synacor.com/projects/APLA/repos/tribe",
+  "license": "BSD",
+  "homepage": "https://github.com/synacorinc/jan",
   "private": true,
   "ignore": [
     "**/.*",
     "**/*.min.js",
+    "package.json",
     "node_modules",
     "bower_components",
     "src",

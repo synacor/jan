@@ -34,10 +34,7 @@ module.exports = function(grunt) {
 			},
 			main : {
 				options : {
-					'-W041' : true,
-					'-W030' : true,			// && as guard
-					'-W084' : true,			// assignment in expression -> while(a=b())
-					'-W093' : true			// assignment in return -> return foo=bar;
+					jshintrc : '.jshintrc'
 				},
 				src : ['src/**/*.js']
 			},

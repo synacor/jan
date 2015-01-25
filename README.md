@@ -1,12 +1,12 @@
 Jan [![NPM Version](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www.npmjs.org/package/jan) [![Bower Version](http://img.shields.io/bower/v/jan.svg?style=flat)](http://bower.io/search/?q=jan)
 =============
 
-![Jan](http://janjs.herokuapp.com/logo.png)
+![Jan](https://janjs.herokuapp.com/logo.png)
 
 **Jan is a simple library for making HTTP requests.**  
 *Issue network calls without dealing with awkward legacy API signatures.*  
 
-**[Documentation](http://janjs.herokuapp.com)**
+**[Documentation](https://janjs.herokuapp.com)**
 
 [![Build Status](https://img.shields.io/travis/synacorinc/jan.svg?style=flat&branch=master)](https://travis-ci.org/synacorinc/jan)
 [![Dependency Status](http://img.shields.io/david/synacorinc/jan.svg?style=flat)](https://david-dm.org/synacorinc/jan)
@@ -155,4 +155,4 @@ BSD
 ---
 
 
-[![Jan Hankl](http://janjs.herokuapp.com/jan.jpg)](http://youtu.be/DY-Zdgo0OXo)
+[![Jan Hankl](https://janjs.herokuapp.com/jan.jpg)](http://youtu.be/DY-Zdgo0OXo)

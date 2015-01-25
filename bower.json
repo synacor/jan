@@ -21,7 +21,6 @@
   ],
   "license": "BSD",
   "homepage": "https://github.com/synacorinc/jan",
-  "private": true,
   "ignore": [
     "**/.*",
     "**/*.min.js",

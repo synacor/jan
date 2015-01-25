@@ -1,6 +1,7 @@
 {
   "name": "jan",
   "version": "1.0.0",
+  "description": "Jan is a simple library for making HTTP requests.",
   "authors": [
     "Jason Miller <jasonmiller@synacor.com>"
   ],

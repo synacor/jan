@@ -1,6 +1,8 @@
 Jan [![NPM Version](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www.npmjs.org/package/jan) [![Bower Version](http://img.shields.io/bower/v/jan.svg?style=flat)](http://bower.io/search/?q=jan)
 =============
 
+[![Join the chat at https://gitter.im/synacorinc/jan](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/synacorinc/jan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ![Jan](https://janjs.herokuapp.com/logo.png)
 
 **Jan is a simple library for making HTTP requests.**  

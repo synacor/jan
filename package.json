@@ -1,8 +1,8 @@
 {
   "name": "jan",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Jan is a simple library for making HTTP requests.",
-  "main": "jan.js",
+  "main": "dist/jan.js",
   "scripts": {
     "build": "grunt",
     "prestart": "grunt",

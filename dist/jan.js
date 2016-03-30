@@ -92,7 +92,7 @@
 			if (xhr.readyState!==4) return;
 			var res = {
 					status : xhr.status,
-					error : xhr.status>399 ? xhr.statusText : null,
+					error : !xhr.status ? 'Connection Error' : xhr.status>399 ? xhr.statusText : null,
 					headers : {},
 					body : xhr.responseText,
 					xml : xhr.responseXML,

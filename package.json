@@ -1,6 +1,6 @@
 {
   "name": "jan",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Jan is a simple library for making HTTP requests.",
   "main": "dist/jan.js",
   "scripts": {

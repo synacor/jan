@@ -1,7 +1,7 @@
 Jan [![NPM Version](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www.npmjs.org/package/jan) [![Bower Version](http://img.shields.io/bower/v/jan.svg?style=flat)](http://bower.io/search/?q=jan)
 =============
 
-[![Join the chat at https://gitter.im/synacorinc/jan](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/synacorinc/jan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/synacor/jan](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/synacor/jan)
 
 ![Jan](https://janjs.herokuapp.com/logo.png)
 
@@ -10,9 +10,9 @@ Jan [![NPM Version](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www
 
 **[Documentation](https://janjs.herokuapp.com)**
 
-[![Build Status](https://img.shields.io/travis/synacorinc/jan.svg?style=flat&branch=master)](https://travis-ci.org/synacorinc/jan)
-[![Dependency Status](http://img.shields.io/david/synacorinc/jan.svg?style=flat)](https://david-dm.org/synacorinc/jan)
-[![devDependency Status](http://img.shields.io/david/dev/synacorinc/jan.svg?style=flat)](https://david-dm.org/synacorinc/jan#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/synacor/jan.svg?style=flat&branch=master)](https://travis-ci.org/synacor/jan)
+[![Dependency Status](http://img.shields.io/david/synacor/jan.svg?style=flat)](https://david-dm.org/synacor/jan)
+[![devDependency Status](http://img.shields.io/david/dev/synacor/jan.svg?style=flat)](https://david-dm.org/synacor/jan#info=devDependencies)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 

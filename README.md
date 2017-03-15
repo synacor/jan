@@ -1,6 +1,8 @@
 Jan [![NPM Version](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www.npmjs.org/package/jan) [![Bower Version](http://img.shields.io/bower/v/jan.svg?style=flat)](http://bower.io/search/?q=jan)
 =============
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/synacor/jan.svg)](https://greenkeeper.io/)
+
 [![Join the chat at https://gitter.im/synacor/jan](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/synacor/jan)
 
 ![Jan](https://janjs.herokuapp.com/logo.png)

@@ -1,7 +1,5 @@
-Jan [![NPM Version](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www.npmjs.org/package/jan) [![Bower Version](http://img.shields.io/bower/v/jan.svg?style=flat)](http://bower.io/search/?q=jan)
+Jan [![npm](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www.npmjs.org/package/jan) [![travis](https://travis-ci.org/synacor/jan.svg?branch=master)](https://travis-ci.org/synacor/jan)
 =============
-
-[![Join the chat at https://gitter.im/synacor/jan](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/synacor/jan)
 
 ![Jan](https://janjs.herokuapp.com/logo.png)
 
@@ -9,12 +7,6 @@ Jan [![NPM Version](http://img.shields.io/npm/v/jan.svg?style=flat)](https://www
 *Issue network calls without dealing with awkward legacy API signatures.*  
 
 **[Documentation](https://janjs.herokuapp.com)**
-
-[![Build Status](https://img.shields.io/travis/synacor/jan.svg?style=flat&branch=master)](https://travis-ci.org/synacor/jan)
-[![Dependency Status](http://img.shields.io/david/synacor/jan.svg?style=flat)](https://david-dm.org/synacor/jan)
-[![devDependency Status](http://img.shields.io/david/dev/synacor/jan.svg?style=flat)](https://david-dm.org/synacor/jan#info=devDependencies)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 
 ---
